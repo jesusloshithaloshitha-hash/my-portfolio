@@ -1,0 +1,194 @@
+/* Reset default margins/padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and general styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #FFFFFF; /* Royal white text (no neon glow) */
+    background-color: #000000; /* Total royal black background */
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    background-color: #000000;
+    color: #FFFFFF; /* White text (no neon) */
+    text-align: center;
+    padding: 2rem;
+}
+
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    border: 3px solid #FFFFFF;
+    box-shadow: 0 0 10px #FFFFFF; /* Subtle white border glow (kept for photo) */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav a {
+    color: #FFFFFF; /* White nav links (no neon) */
+    text-decoration: none;
+}
+
+/* Sections */
+section {
+    padding: 2rem;
+    margin: 1rem auto;
+    max-width: 800px;
+    background-color: #111111;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    opacity: 0; /* Start hidden for animation */
+    transform: translateY(50px); /* Start below for jump-in */
+    transition: opacity 0.8s ease, transform 0.8s ease; /* Smooth reveal */
+}
+
+section.animate {
+    opacity: 1;
+    transform: translateY(0); /* Jump up on scroll */
+    animation: jumpIn 0.8s ease; /* Add jumping effect */
+}
+
+h2 {
+    margin-bottom: 1rem;
+    color: #4169E1; /* Royal blue (solid, no hollow) */
+    font-weight: bold;
+    opacity: 0;
+    transform: translateX(-100px); /* Start off-screen left */
+    animation: blockJump 1s ease forwards; /* Block animation with jump */
+}
+
+h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #4169E1; /* Royal blue (solid, no hollow) */
+    font-weight: bold;
+    opacity: 0;
+    transform: translateX(-100px);
+    animation: blockJump 1s ease forwards;
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    color: #FFFFFF; /* White lists (no neon) */
+    opacity: 0;
+    transform: scale(0.8); /* Start small for burst */
+    animation: burstJump 1s ease forwards; /* Burst animation with jump */
+}
+
+p {
+    color: #FFFFFF; /* White paragraphs (no neon) */
+    opacity: 0;
+    transform: scale(0.8);
+    animation: burstJump 1s ease forwards;
+}
+
+/* Projects */
+.project {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #333;
+}
+
+.project:last-child {
+    border-bottom: none;
+}
+
+.project h3 {
+    color: #4169E1; /* Royal blue (solid, no hollow) */
+    opacity: 0;
+    transform: translateX(-100px);
+    animation: blockJump 1s ease forwards;
+}
+
+.project p {
+    color: #FFFFFF; /* White project content (no neon) */
+    opacity: 0;
+    transform: scale(0.8);
+    animation: burstJump 1s ease forwards;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #000000;
+    color: #FFFFFF; /* White footer text (no neon) */
+}
+
+/* Keyframe Animations */
+@keyframes jumpIn {
+    0% {
+        transform: translateY(50px);
+    }
+    50% {
+        transform: translateY(-10px); /* Bounce up */
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes blockJump {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    50% {
+        transform: translateX(10px); /* Slight bounce right */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes burstJump {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.2); /* Burst and jump scale */
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
+    nav ul li {
+        margin: 0.5rem 0;
+    }
+    section {
+        padding: 1rem;
+    }
+    .profile-photo {
+        width: 100px;
+        height: 100px;
+    }
+}
